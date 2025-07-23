@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Church Roster Uploader</title>
+</head>
+<body>
+    <h1>Upload Church Roster</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="roster" required>
+        <input type="submit" value="Upload & Show Roster">
+    </form>
+
+    {% if rows %}
+        <h2>Parsed Roster:</h2>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Date</th>
+                <th>I.T. Operator</th>
+                <th>I.T. Email</th>
+                <th>P.A. Operator</th>
+                <th>P.A. Email</th>
+                <th>Comments</th>
+            </tr>
+            {% for row in rows %}
+                <tr>
+                    <td>{{ row.date }}</td>
+                    <td>{{ row.it }}</td>
+                    <td>{{ row.it_email }}</td>
+                    <td>{{ row.pa }}</td>
+                    <td>{{ row.pa_email }}</td>
+                    <td>{{ row.comment }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
